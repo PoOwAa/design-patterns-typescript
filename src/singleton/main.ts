@@ -21,6 +21,7 @@ async function main() {
   console.log(await userService.getUser(jane.id));
   console.log(await userService.getUser(jane.id));
   console.log('service1', await service1.get(`user-${jane.id}`));
+  console.log('CacheService', await CacheService.get(`user-${jane.id}`));
   await new Promise((r) => setTimeout(r, 500));
   console.log(await userService.getUser(jane.id));
   await new Promise((r) => setTimeout(r, 3000));
