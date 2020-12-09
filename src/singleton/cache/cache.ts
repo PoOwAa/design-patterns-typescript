@@ -1,3 +1,7 @@
+import ICache from './interface/cache.interface';
+import ICacheOptions from './interface/cacheOption.interface';
+import { CacheFunction } from './type/cacheFunction.type';
+
 class CacheEntry<T> {
   key: string;
   value: T;
@@ -14,15 +18,7 @@ class CacheEntry<T> {
   }
 }
 
-interface CacheOptions {
-  ttl: number;
-  entryMaxSize: number;
-  entryMaxCount: number;
-}
-
-type CacheFunction<T> = () => Promise<T> | T;
-
-class Cache {
+class Cache implements ICache {
   /**
    * Maximum size of 1 entry in bytes
    */
@@ -40,7 +36,7 @@ class Cache {
     this.entryMaxSize = Number.MAX_SAFE_INTEGER;
   }
 
-  init(options: CacheOptions) {
+  init(options: ICacheOptions) {
     this.ttl = options.ttl || 0;
     this.entryMaxSize = options.entryMaxSize || Number.MAX_SAFE_INTEGER;
     this.entryMaxCount = options.entryMaxCount || 0;
