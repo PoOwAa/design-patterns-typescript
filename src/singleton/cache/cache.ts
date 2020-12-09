@@ -169,4 +169,4 @@ class Cache implements ICache {
 }
 
 const CacheService: Cache = new Cache();
-export default CacheService;
+export default CacheService as ICache;

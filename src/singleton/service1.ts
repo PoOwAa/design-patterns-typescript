@@ -11,4 +11,8 @@ export default class Service1 {
   async get(key: string): Promise<any> {
     return this.cache.get(key);
   }
+
+  async get2(key: string): Promise<any> {
+    return CacheService.get(key);
+  }
 }
