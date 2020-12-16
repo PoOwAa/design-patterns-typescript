@@ -7,7 +7,8 @@ export default class User {
   constructor(name: string) {
     this.id = Math.floor(Math.random() * 100000);
     this.name = name;
-    this.createdAt = new Date();
-    this.updatedAt = new Date();
+    const d = new Date();
+    this.createdAt = d;
+    this.updatedAt = d;
   }
 }

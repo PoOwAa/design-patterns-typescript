@@ -1,10 +1,10 @@
-import CacheService from '../cache/cache';
 import User from './user.entity';
 import UserRepository from './user.repository';
-import ICache from '../cache/interface/cache.interface';
+import Cache from '../cache/interface/cache.interface';
+import CacheService from '../cache/cache.service';
 
 export default class UserService {
-  protected readonly cache: ICache;
+  protected readonly cache: Cache;
   protected userList: User[] = [];
   protected userRepository: UserRepository;
 
@@ -34,7 +34,10 @@ export default class UserService {
     );
   }
 
-  async updateUser(id: number, updateData: Partial<User>): Promise<User | null> {
+  async updateUser(
+    id: number,
+    updateData: Partial<User>
+  ): Promise<User | null> {
     this.cache.del(`user-${id}`);
     return this.userRepository.update(id, updateData);
   }

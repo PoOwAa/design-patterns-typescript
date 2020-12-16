@@ -16,12 +16,14 @@ export default class UserRepository {
     console.log(`Getting user [${id}] from DB`);
     return new Promise((resolve) => {
       setTimeout(() => {
-        const user: User | undefined = this.userList.find((u: User) => u.id === id);
+        const user: User | undefined = this.userList.find(
+          (u: User) => u.id === id
+        );
         if (user) {
           resolve(user);
         }
         resolve(null);
-      }, 1000);
+      }, 2000);
     });
   }
 

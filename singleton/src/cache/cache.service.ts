@@ -1,24 +1,9 @@
-import ICache from './interface/cache.interface';
-import ICacheOptions from './interface/cacheOption.interface';
+import Cache from './interface/cache.interface';
+import CacheEntry from './cacheEntry.entity';
+import ICacheOption from './interface/cacheOption.interface';
 import { CacheFunction } from './type/cacheFunction.type';
 
-class CacheEntry<T> {
-  key: string;
-  value: T;
-  length: number;
-  now: number;
-  ttl: number;
-
-  constructor(key: string, value: T, length: number, now: number, ttl: number) {
-    this.key = key;
-    this.value = value;
-    this.length = length;
-    this.now = now;
-    this.ttl = ttl;
-  }
-}
-
-class Cache implements ICache {
+class CacheService implements Cache {
   /**
    * Maximum size of 1 entry in bytes
    */
@@ -36,7 +21,7 @@ class Cache implements ICache {
     this.entryMaxSize = Number.MAX_SAFE_INTEGER;
   }
 
-  init(options: ICacheOptions) {
+  init(options: ICacheOption) {
     this.ttl = options.ttl || 0;
     this.entryMaxSize = options.entryMaxSize || Number.MAX_SAFE_INTEGER;
     this.entryMaxCount = options.entryMaxCount || 0;
@@ -168,5 +153,4 @@ class Cache implements ICache {
   }
 }
 
-const CacheService: Cache = new Cache();
-export default CacheService as ICache;
+export default new CacheService() as Cache;
