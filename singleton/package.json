@@ -6,7 +6,6 @@
         "lint": "eslint . --ext .ts",
         "start": "ts-node ./src/main.ts",
         "start:simple": "ts-node ./src/simple.ts",
-        "start:strategy": "ts-node ./src/strategy/main.ts",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {

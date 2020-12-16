@@ -10,8 +10,20 @@ Read more on [Medium](https://andyrum.medium.com) <-- Coming soon!
 
 ## Example 1 - Simple
 
+### Start
+
+`npm run start:simple`
+
+### Files
+
 You can find the entry point at `src/simple.ts` and the rest of the necessary files under `src/simple`
 
 ## Example 2 - Strategy pattern in Cache
+
+### Start
+
+`npm run start`
+
+### Files
 
 You can find the entry point at `src/main.ts`. The other necessary files are in the rest of the directories, but `src/simple`.
