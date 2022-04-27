@@ -1,24 +1,36 @@
-export default class Pirate {
+import { Unit } from '../unit.interface';
+
+export default class Sailor implements Unit {
   private name: string;
   private health: number;
   private maxHealth = 100;
+  private attack = 20;
 
-  constructor(name: string, health: number) {
+  constructor(name: string) {
     this.name = name;
-    if (health <= this.maxHealth) {
-      this.health = health;
-    } else {
-      this.health = this.maxHealth;
-    }
+    this.health = this.maxHealth;
+  }
+
+  getName(): string {
+    return this.name;
+  }
+
+  getHealth(): number {
+    return this.health;
+  }
+
+  getAttackPower(): number {
+    return this.attack;
   }
 
   attacked(value: number) {
-    if (value >= this.health) {
+    if (value > this.health) {
       console.log(`${this.name} died.`);
+      this.health = 0;
     } else {
       this.health -= value;
       console.log(
-        `Pirate attacked [${value}] remaining health: [${this.health}]`
+        `${this.name} attacked [${value}] remaining health: [${this.health}]`
       );
     }
   }
@@ -31,9 +43,5 @@ export default class Pirate {
       this.health += value;
       console.log(`${this.name} healed to [${this.health}]`);
     }
-  }
-
-  drinkRum(): void {
-    console.log(`${this.name} drinks some rum. Yarrrr`);
   }
 }
